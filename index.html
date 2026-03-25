@@ -83,32 +83,57 @@
   }
   .btn-outline:hover { border-color: rgba(255,255,255,.5); }
 
-  /* ── PHONE MOCKUP CAROUSEL ── */
-  .phone-showcase {
-    padding: 40px 24px 80px; text-align: center;
+  /* ── SCREENSHOT CARDS ── */
+  .screen-showcase {
+    padding: 40px 24px 80px; text-align: center; max-width: 1100px; margin: 0 auto;
   }
-  .phone-showcase h2 { font-size: 2rem; margin-bottom: 12px; }
-  .phone-showcase > p { color: var(--muted); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
-  .phone-carousel {
-    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding: 20px 32px 40px; -webkit-overflow-scrolling: touch;
+  .screen-showcase h2 { font-size: 2rem; margin-bottom: 12px; }
+  .screen-showcase > p { color: var(--muted); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .screen-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px;
   }
-  .phone-carousel::-webkit-scrollbar { height: 6px; }
-  .phone-carousel::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
-  .phone-frame {
-    flex: 0 0 280px; scroll-snap-align: center;
-    background: #000; border-radius: 32px; overflow: hidden;
-    border: 3px solid #333; position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    transition: transform .3s;
+  .screen-card {
+    background: var(--card); border-radius: var(--radius); overflow: hidden;
+    cursor: pointer; border: 2px solid transparent;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
   }
-  .phone-frame:hover { transform: translateY(-8px); }
-  .phone-frame img { width: 100%; display: block; }
-  .phone-label {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,.85));
-    padding: 40px 16px 16px; font-weight: 700; font-size: .85rem;
+  .screen-card:hover { transform: translateY(-6px); border-color: var(--red); box-shadow: 0 12px 32px rgba(211,47,47,.2); }
+  .screen-card img { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; }
+  .screen-card-label {
+    padding: 10px 12px; font-weight: 700; font-size: .8rem; text-align: center;
+    background: rgba(0,0,0,.4);
   }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0,0,0,.92); backdrop-filter: blur(8px);
+    display: none; align-items: center; justify-content: center;
+    flex-direction: column; padding: 24px;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-height: 80vh; max-width: 90vw; border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  }
+  .lightbox-title { margin-top: 16px; font-weight: 700; font-size: 1.1rem; }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 28px;
+    background: none; border: none; color: #fff; font-size: 2rem;
+    cursor: pointer; opacity: .7; transition: opacity .2s;
+  }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(211,47,47,.8); border: none; color: #fff;
+    width: 48px; height: 48px; border-radius: 50%;
+    font-size: 1.4rem; cursor: pointer; transition: background .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-nav:hover { background: var(--red); }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+  .lightbox-counter { color: var(--muted); font-size: .85rem; margin-top: 8px; }
 
   /* ── HOW IT WORKS ── */
   .how-it-works { padding: 80px 24px; max-width: 1000px; margin: 0 auto; }
@@ -199,7 +224,7 @@
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: block; }
-    .phone-frame { flex: 0 0 220px; }
+    .screen-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
     .scene { flex-direction: column; align-items: center; text-align: center; }
   }
 
@@ -286,26 +311,36 @@ if (sessionStorage.getItem('ss-auth')==='1') {
   </div>
 </section>
 
-<!-- PHONE SHOWCASE -->
-<section class="phone-showcase">
+<!-- SCREENSHOT CARDS -->
+<section class="screen-showcase" id="screens">
   <h2>Experience the App</h2>
-  <p>Scroll through real screens from Service Savior — designed for both consumers and service providers.</p>
-  <div class="phone-carousel">
-    <div class="phone-frame"><img src="screenshots/1. Welcome page.png" alt="Welcome"><div class="phone-label">Welcome</div></div>
-    <div class="phone-frame"><img src="screenshots/Sign in.png" alt="Sign In"><div class="phone-label">Sign In</div></div>
-    <div class="phone-frame"><img src="screenshots/Sign Up.png" alt="Sign Up"><div class="phone-label">Sign Up</div></div>
-    <div class="phone-frame"><img src="screenshots/2. Consumer Homescreen.png" alt="Consumer Home"><div class="phone-label">Consumer Home</div></div>
-    <div class="phone-frame"><img src="screenshots/2. Homepage.png" alt="Homepage"><div class="phone-label">Homepage</div></div>
-    <div class="phone-frame"><img src="screenshots/3. Category detail.png" alt="Category Detail"><div class="phone-label">Category Detail</div></div>
-    <div class="phone-frame"><img src="screenshots/10. Contractor Homescreen.png" alt="Contractor Home"><div class="phone-label">Contractor Home</div></div>
-    <div class="phone-frame"><img src="screenshots/Current Jobs.png" alt="Current Jobs"><div class="phone-label">Current Jobs</div></div>
-    <div class="phone-frame"><img src="screenshots/Completed Jobs.png" alt="Completed Jobs"><div class="phone-label">Completed Jobs</div></div>
-    <div class="phone-frame"><img src="screenshots/Open Bids.png" alt="Open Bids"><div class="phone-label">Open Bids</div></div>
-    <div class="phone-frame"><img src="screenshots/Service Bidding.png" alt="Service Bidding"><div class="phone-label">Service Bidding</div></div>
-    <div class="phone-frame"><img src="screenshots/Contract Service Current Market.png" alt="Contract Service"><div class="phone-label">Contract Service</div></div>
-    <div class="phone-frame"><img src="screenshots/Profile.png" alt="Profile"><div class="phone-label">Profile</div></div>
+  <p>Click any screen to view it full size. Navigate between screens with arrows.</p>
+  <div class="screen-grid">
+    <div class="screen-card" onclick="openLightbox(0)"><img src="screenshots/1.-Welcome-page.png" alt="Welcome"><div class="screen-card-label">Welcome</div></div>
+    <div class="screen-card" onclick="openLightbox(1)"><img src="screenshots/Sign-in.png" alt="Sign In"><div class="screen-card-label">Sign In</div></div>
+    <div class="screen-card" onclick="openLightbox(2)"><img src="screenshots/Sign-Up.png" alt="Sign Up"><div class="screen-card-label">Sign Up</div></div>
+    <div class="screen-card" onclick="openLightbox(3)"><img src="screenshots/2.-Consumer-Homescreen.png" alt="Consumer Home"><div class="screen-card-label">Consumer Home</div></div>
+    <div class="screen-card" onclick="openLightbox(4)"><img src="screenshots/2.-Homepage.png" alt="Homepage"><div class="screen-card-label">Homepage</div></div>
+    <div class="screen-card" onclick="openLightbox(5)"><img src="screenshots/3.-Category-detail.png" alt="Category Detail"><div class="screen-card-label">Category Detail</div></div>
+    <div class="screen-card" onclick="openLightbox(6)"><img src="screenshots/10.-Contractor-Homescreen.png" alt="Contractor Home"><div class="screen-card-label">Contractor Home</div></div>
+    <div class="screen-card" onclick="openLightbox(7)"><img src="screenshots/Current-Jobs.png" alt="Current Jobs"><div class="screen-card-label">Current Jobs</div></div>
+    <div class="screen-card" onclick="openLightbox(8)"><img src="screenshots/Completed-Jobs.png" alt="Completed Jobs"><div class="screen-card-label">Completed Jobs</div></div>
+    <div class="screen-card" onclick="openLightbox(9)"><img src="screenshots/Open-Bids.png" alt="Open Bids"><div class="screen-card-label">Open Bids</div></div>
+    <div class="screen-card" onclick="openLightbox(10)"><img src="screenshots/Service-Bidding.png" alt="Service Bidding"><div class="screen-card-label">Service Bidding</div></div>
+    <div class="screen-card" onclick="openLightbox(11)"><img src="screenshots/Contract-Service-Current-Market.png" alt="Contract Service"><div class="screen-card-label">Contract Service</div></div>
+    <div class="screen-card" onclick="openLightbox(12)"><img src="screenshots/Profile.png" alt="Profile"><div class="screen-card-label">Profile</div></div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lightbox-title" id="lb-title"></div>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
 
 <!-- HOW IT WORKS -->
 <section class="how-it-works" id="how">
@@ -473,6 +508,52 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.2 });
 scenes.forEach(s => observer.observe(s));
+
+// Lightbox
+const slides = [
+  { src: 'screenshots/1.-Welcome-page.png', title: 'Welcome' },
+  { src: 'screenshots/Sign-in.png', title: 'Sign In' },
+  { src: 'screenshots/Sign-Up.png', title: 'Sign Up' },
+  { src: 'screenshots/2.-Consumer-Homescreen.png', title: 'Consumer Home' },
+  { src: 'screenshots/2.-Homepage.png', title: 'Homepage' },
+  { src: 'screenshots/3.-Category-detail.png', title: 'Category Detail' },
+  { src: 'screenshots/10.-Contractor-Homescreen.png', title: 'Contractor Home' },
+  { src: 'screenshots/Current-Jobs.png', title: 'Current Jobs' },
+  { src: 'screenshots/Completed-Jobs.png', title: 'Completed Jobs' },
+  { src: 'screenshots/Open-Bids.png', title: 'Open Bids' },
+  { src: 'screenshots/Service-Bidding.png', title: 'Service Bidding' },
+  { src: 'screenshots/Contract-Service-Current-Market.png', title: 'Contract Service' },
+  { src: 'screenshots/Profile.png', title: 'Profile' },
+];
+let currentSlide = 0;
+function openLightbox(i) {
+  currentSlide = i;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+  currentSlide = (currentSlide + dir + slides.length) % slides.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  document.getElementById('lb-img').src = slides[currentSlide].src;
+  document.getElementById('lb-title').textContent = slides[currentSlide].title;
+  document.getElementById('lb-counter').textContent = (currentSlide + 1) + ' / ' + slides.length;
+}
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
 </script>
 </body>
 </html>
