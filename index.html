@@ -291,23 +291,86 @@ if (sessionStorage.getItem('ss-auth')==='1') {
 <nav>
   <div class="nav-logo">Service Savior</div>
   <ul class="nav-links">
+    <li><a href="#market">The Market</a></li>
+    <li><a href="#screens">App Screens</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#walkthrough">Walkthrough</a></li>
-    <li><a href="#audience">Who It's For</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Get Started</button>
   <button class="hamburger" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">&#9776;</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge fade-up">Now in Development</div>
-  <h1 class="fade-up delay-1">Your One-Stop <span>Service Connection</span></h1>
-  <p class="fade-up delay-2">Service Savior connects consumers with trusted service providers through a reverse bidding system. Post what you need, get competitive offers, and choose the best deal — all in one app.</p>
+  <div class="hero-badge fade-up">App Demo</div>
+  <h1 class="fade-up delay-1">The <span>Marketplace</span> for Services</h1>
+  <p class="fade-up delay-2" style="max-width:640px;">A reverse-bidding platform that connects consumers with service providers — think eBay meets Priceline, but for home services, professional consulting, and personal care.</p>
   <div class="hero-buttons fade-up delay-3">
-    <a href="#walkthrough" class="btn-primary">See How It Works</a>
-    <a href="#features" class="btn-outline">Explore Features</a>
+    <a href="#market" class="btn-primary">Why This Market</a>
+    <a href="#screens" class="btn-outline">See the App</a>
+  </div>
+</section>
+
+<!-- MARKET OPPORTUNITY -->
+<section id="market" style="padding:80px 24px; max-width:1000px; margin:0 auto;">
+  <div class="section-label" style="text-align:center;">The Problem</div>
+  <h2 style="font-size:2.2rem; text-align:center; margin-bottom:20px;">A $650+ Billion Market With No Real Marketplace</h2>
+  <p style="color:var(--muted); text-align:center; max-width:700px; margin:0 auto 48px; font-size:1.05rem;">
+    The U.S. home services industry generates over <strong style="color:#fff;">$650 billion annually</strong> and is projected to surpass <strong style="color:#fff;">$1 trillion by 2030</strong>. Yet there is no true marketplace for services. Consumers and providers are stuck in a broken system.
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; margin-bottom:56px;">
+    <div class="step" style="text-align:center;">
+      <div style="font-size:2.2rem; font-weight:900; color:var(--red); margin-bottom:4px;">$650B+</div>
+      <p style="color:var(--muted); font-size:.85rem;">U.S. home services market (2025), growing to $1T+ by 2030</p>
+    </div>
+    <div class="step" style="text-align:center;">
+      <div style="font-size:2.2rem; font-weight:900; color:var(--red); margin-bottom:4px;">84%</div>
+      <p style="color:var(--muted); font-size:.85rem;">of consumers hit with hidden fees and price increases in home services</p>
+    </div>
+    <div class="step" style="text-align:center;">
+      <div style="font-size:2.2rem; font-weight:900; color:var(--red); margin-bottom:4px;">41%</div>
+      <p style="color:var(--muted); font-size:.85rem;">of service calls go unanswered on weekends — customers can't even reach providers</p>
+    </div>
+    <div class="step" style="text-align:center;">
+      <div style="font-size:2.2rem; font-weight:900; color:var(--red); margin-bottom:4px;">60%</div>
+      <p style="color:var(--muted); font-size:.85rem;">of callers hang up after waiting just 1 minute for a provider to answer</p>
+    </div>
+  </div>
+
+  <div class="section-label" style="text-align:center;">The Gap</div>
+  <h2 style="font-size:1.8rem; text-align:center; margin-bottom:20px;">Consumers Have Budgets. Providers Have Inventory. Nobody Connects Them.</h2>
+  <div style="color:var(--muted); max-width:750px; margin:0 auto; font-size:1rem; line-height:1.8;">
+    <p style="margin-bottom:16px;">
+      Try calling a plumber and saying <em style="color:#fff;">"Can you change out my toilet for $200?"</em> — they'll hang up. The current system doesn't allow consumers to name their price or providers to fill their downtime. There's no negotiation. No transparency. No marketplace.
+    </p>
+    <p style="margin-bottom:16px;">
+      But the reality is, that same plumber might have open slots on Tuesdays. They'd happily take a $200 toilet swap to fill excess service inventory rather than sit idle. Right now, there's no platform connecting that demand with that supply.
+    </p>
+    <p style="margin-bottom:16px;">
+      <strong style="color:#fff;">Service Savior bridges this gap.</strong> Consumers post what they need with a specific budget and scope — AI helps build any simple or complex scope, with photo uploads — and the request goes out via reverse bidding to verified providers in the area. Providers compete on price and timeframe. The best bid wins.
+    </p>
+    <p>
+      It's a mix between <strong style="color:#fff;">eBay</strong> (competitive bidding) and <strong style="color:#fff;">Priceline</strong> (name your price) — built specifically for services. And in the future, providers will be able to discount services like <strong style="color:#fff;">Groupon</strong> — without the 50%+ platform fees that make Groupon unsustainable for small businesses.
+    </p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-top:56px;">
+    <div class="feature-card">
+      <div class="feature-icon" style="font-size:1.6rem;">&#128176;</div>
+      <h3>Excess Service Inventory</h3>
+      <p>Providers have open time slots they can't fill. Service Savior turns idle capacity into revenue by matching them with budget-conscious consumers.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="font-size:1.6rem;">&#129302;</div>
+      <h3>AI-Powered Scoping</h3>
+      <p>No more guessing. AI asks smart questions and builds detailed scopes — from a simple toilet replacement to a full kitchen remodel — with photo uploads for clarity.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="font-size:1.6rem;">&#127919;</div>
+      <h3>The Goal: A True Services Marketplace</h3>
+      <p>Every services vertical — home repair, consulting, personal care, and beyond — all in one marketplace. The entire services economy, made transparent and accessible.</p>
+    </div>
   </div>
 </section>
 
@@ -462,7 +525,7 @@ if (sessionStorage.getItem('ss-auth')==='1') {
   <div class="scene"><div class="scene-number">12</div><div class="scene-content"><h3>Quality &amp; Reliability</h3><p>Every provider is verified. Quality, reliability, and customer satisfaction are the top priorities.</p></div></div>
   <div class="scene"><div class="scene-number">13</div><div class="scene-content"><h3>Every Service Category</h3><p>Home repairs, professional consulting, personal care — whatever you need, Service Savior connects you.</p></div></div>
   <div class="scene"><div class="scene-number">14</div><div class="scene-content"><h3>Your One-Stop Solution</h3><p>Service Savior is the single platform for all your service needs. One app, unlimited possibilities.</p></div></div>
-  <div class="scene"><div class="scene-number">15</div><div class="scene-content"><h3>Get Started Today</h3><p>Experience the Service Savior difference. Sign up and post your first request in minutes.</p></div></div>
+  <div class="scene"><div class="scene-number">15</div><div class="scene-content"><h3>A True Services Marketplace</h3><p>Service Savior turns the entire services economy into a transparent, accessible marketplace for everyone.</p></div></div>
 </section>
 
 <!-- WHO IT'S FOR -->
@@ -489,11 +552,10 @@ if (sessionStorage.getItem('ss-auth')==='1') {
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="cta">
-  <h2>Ready to Experience<br>the Difference?</h2>
-  <p>Service Savior is a complete functioning platform — not a prototype. Reverse bidding, verified providers, secure payments, and more.</p>
-  <a href="#" class="btn-primary" style="display:inline-block; font-size:1.1rem; padding:16px 48px;">Get Started Today</a>
+<!-- CLOSING -->
+<section class="cta-section" id="closing">
+  <h2>A Complete Platform,<br>Not a Prototype</h2>
+  <p>Service Savior launches with reverse bidding, AI scoping, verified providers, secure payments, contracts, messaging, and full admin tools — everything needed to turn the services industry into a true marketplace.</p>
 </section>
 
 <!-- FOOTER -->
